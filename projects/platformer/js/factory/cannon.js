@@ -17,7 +17,7 @@
 
         function createProjectile(x, y) {
             let projectile = game.projectile.create(x, y, assetKeyProjectile);
-            projectile.anchor.setTo(0.5, 0.5);
+            projectile.anchor.setTo(0.25, 0.25);
             projectile.alpha = 0;
             game.physics.arcade.enable(projectile);
             return projectile;

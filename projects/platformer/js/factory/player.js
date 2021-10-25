@@ -5,8 +5,8 @@
     let 
         opspark = window.opspark,
         animations = {},
-        spawnX = 30,
-        spawnY = 600;
+        spawnX = 210,
+        spawnY = 250;
         
     opspark.createPlayer = function (game) {
         let 
@@ -44,7 +44,7 @@
         
         function createDuckState(name) {
             var 
-                xOffset = -6,
+                xOffset = -10,
                 yOffset = 0,
                 state = createState(name);
             state.duck = doNothing;
@@ -122,24 +122,24 @@
         
         function createFlyingJumpState(name) {
             let 
-                xOffset = 17,
-                yOffset = 9,
+                xOffset = 0,
+                yOffset = 0,
                 state = createState(name);
                 state.fire = state.duck = state.idle = state.walk = state.run = 
                 state.stop = state.duck = state.jump = state.flyingJump = doNothing;
             state.enter = function() {
                 console.log(`entering ${ name }`);
-                asset.body.bounce.y = 0;
+                asset.body.bounce.y = 0.01;
                 game.add.tween(asset.body).to( { y: asset.body.y -100 }, 1000, Phaser.Easing.Linear.None, true);
 
-                asset.body.velocity.x = 200 * _direction;
+                asset.body.velocity.x = 100 * _direction;
                 asset.x += xOffset * _direction;
                 asset.y += yOffset;
             };
             state.exit = function() {
-                asset.body.bounce.y = 0.4;
-                asset.x -= xOffset * _direction;
-                asset.y -= yOffset;
+                asset.body.bounce.y = 0.1;
+                asset.x += xOffset * _direction;
+                asset.y += yOffset;
             };
             return state;
         }
@@ -221,18 +221,18 @@
                 console.log(`total frames: ${flyingJump.frameTotal}`);
                 console.log(`origYOffset : ${origYOffset}`);
             
-            asset.body.offset.x += 10 * _direction;
-            asset.body.offset.y -= 30;
-            asset.body.y -= 22;
+            asset.body.offset.x += 3 * _direction;
+            asset.body.offset.y += 5;
+            asset.body.y += 2;
             let onUpdate = function (anim, frame) {
                 console.log(frame.index);
                 if (frame.index < 52) {
                     console.log(`up y offset: ${asset.body.offset.y}`);
-                    asset.body.offset.y -= 1;
+                    asset.body.offset.y += 7;
                 } else {
                     console.log(`down y offset: ${asset.body.offset.y}`);
-                    asset.body.offset.x -= 1 * _direction;
-                    asset.body.offset.y += 2;
+                    asset.body.offset.x += 3 * _direction;
+                    asset.body.offset.y += 5;
                 }
             };
             
@@ -243,7 +243,8 @@
             setState(_flyingJump);
             asset.animations.currentAnim.onComplete.addOnce(function onComplete() { 
                 console.log('jump complete');
-                asset.body.offset.y += 24;
+                asset.body.offset.y += 5;
+                asset.body.offset.x += 3;
                 flyingJump.onUpdate.remove(onUpdate, this);
                 stop();
             }, this);
@@ -319,8 +320,8 @@
         game.physics.arcade.enable(asset);
     
         //  Player physics properties. Give the little guy a slight bounce.
-        asset.body.bounce.y = 0.4;
-        asset.body.gravity.y = 900;
+        asset.body.bounce.y = 0.000001;
+        asset.body.gravity.y = 450;
         // {"w":69,"h":107}
         asset.body.setSize(22, 95, 0, -3);
         asset.body.collideWorldBounds = true;
