@@ -20,12 +20,19 @@ var init = function (window) {
         ////////////////////////////////////////////////////////////
         
         // TODO 1 : Declare and initialize our variables
-
-
-        // TODO 2 : Create a function that draws a circle 
-        
-
+        var circle;
+        var circles=[];
+        // TODO 2 : Create a function that draws a circle     
+ 
+        // Code to draw a circle
+        function drawCircle (){
+            circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
+            physikz.addRandomVelocity(circle, canvas); 
+            view.addChild(circle);
+            circles.push(circle);
+        };
         // TODO 3 / 8 : Call the drawCircle() function 
+        drawCircle();
 
 
         ////////////////////////////////////////////////////////////
@@ -36,10 +43,14 @@ var init = function (window) {
         This Function is called 60 times/second producing 60 frames/second.
         In each frame, for every circle, it should redraw that circle
         and check to see if it has drifted off the screen.         
-        */
-        function update() {
+        */ function update() {
             // TODO 4 : Update the circle's position //
-
+            physikz.updatePosition( /* Your Bracket Notation HERE */ );
+            physikz.updatePosition( /* Your Bracket Notation HERE */ );
+            physikz.updatePosition( /* Your Bracket Notation HERE */ );
+            physikz.updatePosition( /* Your Bracket Notation HERE */ );
+            physikz.updatePosition( /* Your Bracket Notation HERE */ );
+        };
             
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
            
