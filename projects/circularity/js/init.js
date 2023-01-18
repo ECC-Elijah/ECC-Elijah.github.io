@@ -56,7 +56,7 @@ var init = function (window) {
                 var eachCircle = circles[i];
                 physikz.updatePosition(eachCircle);
                 game.checkCirclePosition(eachCircle);
-            }
+            };
         
         
             /* Deleted hard coded variables because creating iterating array in its place */
