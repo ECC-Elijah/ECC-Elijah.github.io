@@ -36,7 +36,7 @@ applyFilter();
 function applyFilter(filterFunction) {
   for (var row = 0;row < image.length; row++ ){
     for (var colors =0; colors< image[row].length; colors++){
-reddify
+reddify()
     };
   };
 };
