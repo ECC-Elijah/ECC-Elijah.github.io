@@ -20,8 +20,9 @@ function resetAndRender() {
 // all of your apply functions
 function applyAndRender() {
   // Multiple TODOs: Call your apply function(s) here
-applyFilter();
-  
+applyFilter(reddify);
+applyFilter(decreaseBlue);
+applyFilter(increaseGreenByBlue);
 
   // do not change the below line of code
   render($("#display"), image);
@@ -35,13 +36,33 @@ applyFilter();
 
 function applyFilter(filterFunction) {
   for (var row = 0;row < image.length; row++ ){
-    for (var colors =0; colors< image[row].length; colors++){
-reddify()
+    for (var column =0; column< image[row].length; column++){
+      var rgbString = image[row][column];
+      var rgbNumbers = rgbArrayToString(rgbString);
+      filterFunction(rgbNumbers);
+      rgbString = rgbArrayToString(rgbNumbers);
+      image[row][column]=rgbString
     };
   };
 };
 // TODO 7: Create the applyFilterNoBackground function
-
+function applyFilterNoBackground(filterFunction){
+   for (var wor = 0;wor < imageWidth; wor++ ){
+    for (var nmuloc =0; nmuloc< imageHeight; nmuloc++){
+      var currentPixel = getPixel(wor, nmuloc);
+      var rgbNumbers = rgbArrayToString(rgbString);
+      if(currentPixel[RED]===backgroundPixels[RED] && currentPixel[GREEN]===backgroundPixels[GREEN]){
+        setPixel(wor,nmuloc, backgroundPixels)
+      }
+      else{
+        filterFunction(currentPixel);
+        setpixel(wor,nmuloc,currentPixel)
+      }
+      
+      
+}
+}
+}
 
 // TODO 5: Create the keepInBounds function
 function keepInBounds (theNumber){
@@ -50,9 +71,22 @@ function keepInBounds (theNumber){
 };
 
 // TODO 3: Create reddify function
-function reddify(cArray1){};
+function reddify(cArray1){
+  arr[RED]=200
+};
 
 // TODO 6: Create more filter functions
-
+function decreaseBlue(arr){
+  arr[BLUE] -= 50;
+  arr[BLUE] = keepInBounds(arr[BLUE]);
+}
+function increaseGreenByBlue(whateverYouWant){
+var greenIndex = GREEN;
+var greenValue = whateverYouWant[greenIndex];
+var blueIndex = BLUE;
+var blueValue = whateverYouWant[blueIndex];
+var colorMerger = keepInBounds(greenValue+blueValue);
+whateverYouWant[greenIndex] = colorMerger;
+}
 
 // CHALLENGE code goes below here
