@@ -1,0 +1,59 @@
+Always start any programming task by clarifying what you want to do and then breaking it down into small steps. Small steps can get you just about anywhere if you’ve got enough time. If you get stuck, break it down smaller!
+
+With your partner, consider each of these questions and make sure you are aligned on your answers:
+
+User Story / Gameplay
+Describe the gameplay
+“Pong is a game played by two players who each control a paddle placed at opposite sides of the screen. A ball is hit back and forth between the two paddles, and the top and bottom walls, until the ball goes past one player's paddle. The player who misses the ball loses the point. “
+
+
+What are the conditions when the game begins?
+The ball moves in a direction randomly with a fixed speed
+
+Does the game have an end? If so, what are the conditions for when it ends?
+“The game ends when one player reaches 11 points.”
+
+What [ifs] will there be?
+
+If (positionX/positionY = paddle or walls) {
+speedX/speedY=-speedX/speedY};
+if (ballPositionX > arena){
+pointLeft + 1
+ballPosition=middleOfArena
+}
+if (ballPositionX < arena){
+pointRight + 1
+ballPosition=middleOfArena
+}
+If (paddle = walls){
+ paddleSpeed=0 
+paddlePosition!=++
+}
+
+Visual Game Components:
+What are the visual game components? For example, in Bouncing Box, the game components were the board and the box.
+The paddles, the ball, the arena, and the points
+
+Which will be static? (the board)
+Points and the walls
+
+Which will be animated? (the box)
+The ball and the paddles
+
+What data will you need to manage each game component? For example, in Bouncing Box, the data values were positionX, speedX, and points.
+Points, ball, and paddles
+
+Events / Logic
+What events will occur in this game? (timer events, keyboard events, clicking events?)
+Keyboard and click events
+
+How do those events affect the data of the program?
+The code would start the game and the paddles would move
+
+For each "event", write out the high-level logic of what will happen. It is better (and tricky) to be as specific as you can while remaining high-level!
+
+For example: in bouncing box, when the box is clicked:
+
+The speed is increased
+The point total goes up by 1 and is displayed on the box
+The position of the box is reset to 0
