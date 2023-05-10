@@ -46,12 +46,18 @@ Points, ball, and paddles
 Events / Logic
 What events will occur in this game? (timer events, keyboard events, clicking events?)
 Keyboard and click events
-
+Keyboard events: directional keys such as the w, s, up arrow, down arrow keys 
+Click events: to start, pause, or restart the game.(or even to select difficulty)
 How do those events affect the data of the program?
-The code would start the game and the paddles would move
+The code would start the game and the paddles and ball would moveprior to the game starting
+the paddle and ball should not move till the player is ready, and pausing should freeze the ball and paddles 
+in place until the game is resumed
 
 For each "event", write out the high-level logic of what will happen. It is better (and tricky) to be as specific as you can while remaining high-level!
-
+//if statment for game start and end also for pause and resume 
+the code for the game play would have functions corresponding to the state of the if statements
+and the core gamplay should respont to the function that check the if statements
+so the state of the game would affect the state of the if statements//
 For example: in bouncing box, when the box is clicked:
 
 The speed is increased
